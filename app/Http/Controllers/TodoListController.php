@@ -12,10 +12,14 @@ class TodoListController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $result=  Todolist::paginate(20);
-        return $this->getResult($result->toArray());
+    public function index(Request $request) 
+    {   
+        if (isset($request->name)) {
+            $result = Todolist::where('name', 'like', '%'.$request->name.'%')->paginate(20);
+        } else {
+            $result=  Todolist::paginate(20);
+        }
+        return $this->getResult($result);
     }
 
     /**
