@@ -14,7 +14,7 @@ class TodoListController extends Controller
      */
     public function index(Request $request) 
     {   
-        if (isset($request->name)) {
+        if ($request->name) {
             $result = Todolist::where('name', 'like', '%'.$request->name.'%')->paginate(20);
         } else {
             $result=  Todolist::paginate(20);
