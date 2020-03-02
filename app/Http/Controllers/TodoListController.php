@@ -14,11 +14,11 @@ class TodoListController extends Controller
      */
     public function index(Request $request) 
     {   
+        $where_array = [['user_id', $request->user_id]];
         if ($request->name) {
-            $result = Todolist::where('name', 'like', '%'.$request->name.'%')->paginate(20);
-        } else {
-            $result=  Todolist::paginate(20);
+            array_push($where_array,['name', 'like', '%'.$request->name.'%']);
         }
+        $result = Todolist::where($where_array)->paginate(20);
         return $this->getResult($result);
     }
 
@@ -30,7 +30,7 @@ class TodoListController extends Controller
      */
     public function store(Request $request)
     {
-        $user_id = 1;
+        $user_id = $request ->input('user_id');
         $name = $request ->input('name');
         $todolist = new Todolist();
         $todolist->name = $name;
