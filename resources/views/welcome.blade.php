@@ -73,7 +73,7 @@
                     Laravel API 
                 </div>
                 <div>
-                    <p>This Laravel App provides the API for the React frontend</p>
+                    <p>API for the React frontend</p>
                 </div>
             </div>
         </div>
