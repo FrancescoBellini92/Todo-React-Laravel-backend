@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\models\Todolist;
+use App\Models\Todolist;
 use Illuminate\Http\Request;
 
 class TodoListController extends Controller
