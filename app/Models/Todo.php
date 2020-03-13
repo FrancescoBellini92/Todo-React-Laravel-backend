@@ -12,6 +12,13 @@ class Todo extends Model
     protected $fillable = [
         'todo',
         'completed',
+        'content',
+        'location',
+        'datetime',
         'list_id'
+    ];
+
+    protected $casts = [
+        'datetime' => 'datetime',
     ];
 }
