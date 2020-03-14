@@ -7,7 +7,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Todo::class, function (Faker $faker) {
     return [
-        "todo" => $faker->sentence,
+        "content" => $faker->sentence,
         "completed" => $faker->randomElement([0,1]),
         'location' => $faker->address,
         'date' => $faker->date,

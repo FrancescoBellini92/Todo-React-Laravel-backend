@@ -10,15 +10,11 @@ class Todo extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'todo',
+        'content',
         'completed',
         'location',
         'date',
         'time',
         'list_id'
-    ];
-
-    protected $casts = [
-        'datetime' => 'datetime',
     ];
 }
