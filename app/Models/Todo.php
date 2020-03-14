@@ -12,9 +12,9 @@ class Todo extends Model
     protected $fillable = [
         'todo',
         'completed',
-        'content',
         'location',
-        'datetime',
+        'date',
+        'time',
         'list_id'
     ];
 

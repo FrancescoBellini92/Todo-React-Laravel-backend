@@ -33,7 +33,7 @@ class TodosController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->only(['list_id', 'todo', 'content','location','datetime','completed']);
+        $data = $request->only(['list_id', 'todo','location','date','time','completed']);
         $data['list_id'] = $data['list_id'] ? : 1;
         $todo = Todo::create($data);
         return $this->getResult($todo->toArray());
@@ -60,9 +60,9 @@ class TodosController extends Controller
     {
         $todo->todo = $request->todo;
         $todo->completed = (int) $request->completed;
-        $todo->content = $request->content;
         $todo->location = $request->location;
-        $todo->datetime = $request->datetime;
+        $todo->date= $request->date;
+        $todo->time= $request->time;
         $success = $todo->save();
         return $this->getResult($todo->toArray(), $success);
     }
