@@ -17,7 +17,7 @@ class CreateTodosTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->string('content');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->date('date')->nullable();
             $table->time('time')->nullable();
             $table->boolean('completed');
