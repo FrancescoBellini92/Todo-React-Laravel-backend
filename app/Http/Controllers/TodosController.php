@@ -13,15 +13,15 @@ class TodosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) 
-    {   $where_array = [];
+    {   $where_conditions = [];
         if ($request ->list_id) {
-           array_push($where_array,['list_id', $request ->list_id]);
+           array_push($where_conditions,['list_id', $request ->list_id]);
         }
         if ($request->filter) {
             $filter = $request->filter === 'completed' ? 1 : 0;
-            array_push($where_array, ['completed', '=', $filter]);
+            array_push($where_conditions, ['completed', '=', $filter]);
         }
-        $result = Todo::where($where_array)->orderBy('id', 'DESC')->paginate(20);
+        $result = Todo::where($where_conditions)->orderBy('id', 'DESC')->paginate(999);
         return $this->getResult($result->toArray());
     }
 

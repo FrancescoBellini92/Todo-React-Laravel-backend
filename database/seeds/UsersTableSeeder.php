@@ -16,16 +16,15 @@ class UsersTableSeeder extends Seeder
      * @return void
      */
     public function run()
-    { factory(User::class, 50)
-        ->create()->each(
-            function($user) {
+    { 
+        factory(User::class, 10)
+        ->create()
+        ->each(function($user) {
                 factory(TodoList::class, 10) 
-                ->create(['user_id' => $user->id])->each(
-                    function($list){
+                ->create(['user_id' => $user->id])
+                ->each(function($list){
                         factory(Todo::class, 10)
-                        ->create([
-                            "list_id" =>$list->id
-                        ]);
+                        ->create(["list_id" =>$list->id]);
                     });
             });
         }

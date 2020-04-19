@@ -23,7 +23,9 @@ class CreateTodosTable extends Migration
             $table->boolean('completed');
             $table->unsignedBigInteger('list_id');
             $table->foreign('list_id')
-            ->on('todolists')->references('id')->onDelete('cascade');
+            ->on('todolists')
+            ->references('id')
+            ->onDelete('cascade');
             $table->softDeletes();
         });
     }

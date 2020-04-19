@@ -14,11 +14,11 @@ class TodoListController extends Controller
      */
     public function index(Request $request) 
     {   
-        $where_array = [['user_id', $request->user_id]];
+        $where_conditions = [['user_id', $request->user_id]];
         if ($request->name) {
-            array_push($where_array,['name', 'like', '%'.$request->name.'%']);
+            array_push($where_conditions,['name', 'like', '%'.$request->name.'%']);
         }
-        $result = Todolist::where($where_array)->paginate(20);
+        $result = Todolist::where($where_conditions)->paginate(999);
         return $this->getResult($result);
     }
 
